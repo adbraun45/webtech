@@ -11,6 +11,7 @@ async function sendApiRequest() {
 
 function useApiData(data) {
     document.querySelector("#question").innerHTML = `Question ${q_num}: ${data.results[0].question}`
+    q_num++
     elems = document.getElementsByClassName("answer")
     var button_array = Array.from(elems);
 
