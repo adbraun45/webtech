@@ -17,24 +17,45 @@ function useApiData(data) {
 
     for (let i = 0; i < 3; i++) {
         item = button_array[Math.floor(Math.random()*button_array.length)];
-        item.innerHTML = data.results[0].incorrect_answers[i]
+        item.innerText = data.results[0].incorrect_answers[i]
         index = button_array.indexOf(item)
         button_array.splice(index, 1)
+
+        item.addEventListener("click", () => {
+            wrongClicked()
+        }, {once: true});
     }
 
     item = button_array[Math.floor(Math.random()*button_array.length)];
-    item.innerHTML = data.results[0].correct_answer
+    item.innerText = data.results[0].correct_answer
 
     let correct_button = item
     console.log(correct_button)
 
-    correct_button.addEventListener("click", (e) => {
-        answerClicked()
+    correct_button.addEventListener("click", () => {
+        correctClicked()
     }, { once: true});
 }
 
+function wrongClicked() {
+    console.log("wrong Answer Clicked");
+    var audio = new Audio('wrong.mp3');
+    audio.play();
+    setTimeout(() => {window.location = "index.html";}, 1000);
+}
 
-function answerClicked(e) {
-    console.log("Correct Answer Clicked")
+function correctClicked() {
+    console.log("Correct Answer Clicked");
+    var audio = new Audio('correct.mp3');
+    audio.play();
+
+    butns = document.getElementsByClassName("answer")
+    //var button_array = Array.from(butns);
+    for (let i = 0; i < butns.length; i++) {
+        item = butns[i]
+        console.log(item)
+        item.replaceWith(item.cloneNode(true));
+    }
+
     sendApiRequest()
 }
