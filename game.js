@@ -1,10 +1,11 @@
-window.onload = sendApiRequest
+let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple"
+window.onload = sendApiRequest(api_url) // change to find url when more category implemented
 let q_num = 1
 var correctSound = new Audio('correct.mp3');
 var incorrectSound = new Audio('wrong.mp3');
 
-async function sendApiRequest() {
-    let response = await fetch("https://opentdb.com/api.php?amount=1&category=9&type=multiple");
+async function sendApiRequest(request) {
+    let response = await fetch(api_url);
     //console.log(response)
     let data = await response.json()
     console.log(data)
@@ -18,12 +19,13 @@ function useApiData(data) {
     var button_array = Array.from(elems);
 
     for (let i = 0; i < 3; i++) {
-        item = button_array[Math.floor(Math.random()*button_array.length)];
-        item.innerHTML = data.results[0].incorrect_answers[i]
-        index = button_array.indexOf(item)
+        incorrect_button = button_array[Math.floor(Math.random()*button_array.length)];
+        incorrect_button.setAttribute('id', 'incorrect_answer')
+        incorrect_button.innerHTML = data.results[0].incorrect_answers[i]
+        index = button_array.indexOf(incorrect_button)
         button_array.splice(index, 1)
 
-        item.addEventListener("click", () => {
+        incorrect_button.addEventListener("click", () => {
             wrongClicked()
         }, {once: true});
     }
@@ -32,6 +34,7 @@ function useApiData(data) {
     item.innerHTML = data.results[0].correct_answer
 
     let correct_button = item
+    correct_button.setAttribute('id', 'correct_answer')
     console.log(correct_button)
 
     correct_button.addEventListener("click", () => {
@@ -42,6 +45,13 @@ function useApiData(data) {
 function wrongClicked() {
     console.log("wrong Answer Clicked");
     incorrectSound.play();
+    document.getElementById('correct_answer').style.backgroundColor = "lightgreen"
+    //document.getElementsByClassName("incorrect_answer").style.backgroundcolor = "red"
+    elements = document.getElementsByClassName('incorrect_answer');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.backgroundColor="red";
+    }
+
     setTimeout(() => {window.location = "index.html";}, 1000);
 }
 
