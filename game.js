@@ -5,7 +5,7 @@ async function sendApiRequest() {
     let response = await fetch("https://opentdb.com/api.php?amount=1&category=9&type=multiple");
     //console.log(response)
     let data = await response.json()
-    //console.log(data)
+    console.log(data)
     useApiData(data)
 }
 
@@ -17,7 +17,7 @@ function useApiData(data) {
 
     for (let i = 0; i < 3; i++) {
         item = button_array[Math.floor(Math.random()*button_array.length)];
-        item.innerText = data.results[0].incorrect_answers[i]
+        item.innerHTML = data.results[0].incorrect_answers[i]
         index = button_array.indexOf(item)
         button_array.splice(index, 1)
 
@@ -27,7 +27,7 @@ function useApiData(data) {
     }
 
     item = button_array[Math.floor(Math.random()*button_array.length)];
-    item.innerText = data.results[0].correct_answer
+    item.innerHTML = data.results[0].correct_answer
 
     let correct_button = item
     console.log(correct_button)
