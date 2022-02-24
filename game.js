@@ -1,5 +1,7 @@
 window.onload = sendApiRequest
 let q_num = 1
+var correctSound = new Audio('correct.mp3');
+var incorrectSound = new Audio('wrong.mp3');
 
 async function sendApiRequest() {
     let response = await fetch("https://opentdb.com/api.php?amount=1&category=9&type=multiple");
@@ -39,18 +41,15 @@ function useApiData(data) {
 
 function wrongClicked() {
     console.log("wrong Answer Clicked");
-    var audio = new Audio('wrong.mp3');
-    audio.play();
+    incorrectSound.play();
     setTimeout(() => {window.location = "index.html";}, 1000);
 }
 
 function correctClicked() {
     console.log("Correct Answer Clicked");
-    var audio = new Audio('correct.mp3');
-    audio.play();
+    correctSound.play();
 
     butns = document.getElementsByClassName("answer")
-    //var button_array = Array.from(butns);
     for (let i = 0; i < butns.length; i++) {
         item = butns[i]
         console.log(item)
