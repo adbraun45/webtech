@@ -1,0 +1,39 @@
+:root {
+}
+
+body {
+    margin: 0; 
+    padding: 0; 
+    font-family: Verdana, Tahoma, sans-serif; 
+}
+
+.header-content {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(0,1,255);
+    background: linear-gradient(90deg, rgba(0,1,255,1) 0%, rgba(35,60,199,1) 31%, rgba(0,255,239,1) 87%);
+}
+
+.header-left {
+}
+
+.header-center {
+    align-items: center;
+    text-align: center;
+    color: white; 
+    font-size: 75pt;
+}
+
+.header-right {
+    padding: 5px;
+}
+
+.header-right a {
+    text-align: center;
+    text-decoration: none;
+}
+
+.header-right:hover {
+    background-color: red;
+}
