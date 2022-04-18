@@ -7,6 +7,10 @@ body {
     font-family: Verdana, Tahoma, sans-serif; 
 }
 
+.main {
+    display: flex;
+}
+
 .header-content {
     padding: 10px;
     display: flex;
@@ -32,8 +36,60 @@ body {
 .header-right a {
     text-align: center;
     text-decoration: none;
+    color: black;
 }
 
 .header-right:hover {
     background-color: red;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    background-color: rgb(0, 217, 255);
+}
+
+.sidebar-header {
+    padding-left: 10px;
+}
+
+.sidebar-title {
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.sidebar-link {
+    text-decoration: none;
+}
+
+.footer-content {
+    border: 3px;
+    border-color: black;
+    border-style: solid none none none;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(117, 203, 243);
+}
+
+.footer-images {
+    display: flex;
+    float: right;
+}
+
+.footer-link-image {
+    padding: 5px 10px 5px 10px;
+    float: right;
+}
+
+.footer-link {
+    text-align: center;
+    text-decoration: none;
+    color: black;
 }
