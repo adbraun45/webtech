@@ -4,33 +4,32 @@
 body {
     margin: 0; 
     padding: 0; 
-    font-family: Verdana, Tahoma, sans-serif; 
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
+    height: 2000px;
 }
 
-.main {
-    display: flex;
+header {
+    margin-left: 15%;
 }
 
-.header-content {
+  .header-title {
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
+    padding: 0.5rem 1rem;
     background: rgb(0,1,255);
-    background: linear-gradient(90deg, rgba(0,1,255,1) 0%, rgba(35,60,199,1) 31%, rgba(0,255,239,1) 87%);
+    background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
 }
 
-.header-left {
+.navbar {
+    font-size: 1em;
+    background-color: grey;
+    padding: 0.5em;
 }
 
 .header-center {
-    align-items: center;
+    background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
     text-align: center;
     color: white; 
-    font-size: 75pt;
-}
-
-.header-right {
-    padding: 5px;
+    font-size: 3rem;
 }
 
 .header-right a {
@@ -45,8 +44,9 @@ body {
 
 .sidebar {
     position: fixed;
+    top: 0;
     height: 100%;
-    width: 25%;
+    width: 15%;
     background-color: rgb(0, 217, 255);
 }
 
@@ -67,10 +67,11 @@ body {
     text-decoration: none;
 }
 
+.main {
+    margin-left: 15%;
+}
+
 .footer-content {
-    border: 3px;
-    border-color: black;
-    border-style: solid none none none;
     color: white;
     position: fixed;
     bottom: 0;
@@ -84,12 +85,14 @@ body {
 }
 
 .footer-link-image {
-    padding: 5px 10px 5px 10px;
-    float: right;
+    width: 20px;
+    height: 20px;
 }
 
 .footer-link {
+    float: right;
     text-align: center;
     text-decoration: none;
+    padding: 5px 10px 5px 10px;
     color: black;
 }
