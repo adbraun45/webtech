@@ -21,8 +21,8 @@ header {
     #small-image {
         display: block !important;
     }
-    :root {
-        --sidebar-width: 20%;
+    .sidebar {
+        width: 20%;
     }
 }
 
