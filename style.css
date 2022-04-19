@@ -1,5 +1,5 @@
 :root {
-    --sidebar-width: 15%;
+    --sidebar-width: 20%;
 }
 
 body {
@@ -16,7 +16,7 @@ header {
 
 @media only screen and (max-width: 600px) {
     #large-image {
-        display: none;
+        display: none !important;
     }
     #small-image {
         display: block !important;
@@ -48,11 +48,31 @@ header {
     background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
 }
 
-.navbar {
-    font-size: 1em;
-    background-color: grey;
-    padding: 0.5em;
-}
+.topnav {
+    background-color: rgb(15, 136, 177);
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: rgb(29, 112, 139);
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: rgb(74, 192, 231);
+    color: white;
+  }
 
 .header-center {
     background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
@@ -84,16 +104,25 @@ header {
 }
 
 .sidebar-title {
+    font-size: 20pt;
+    text-decoration: underline;
 }
 
 .sidebar-links {
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
 }
 
 .sidebar-link {
     text-decoration: none;
+    font-size: 1.5em;
+    margin: 10px 0px 10px 0px;
+    color: white;
+}
+
+.sidebar-link:hover {
+    text-decoration: underline;
+    background-color: #03B1E2;
 }
 
 .main {
