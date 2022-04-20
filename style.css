@@ -1,16 +1,13 @@
 :root {
     --sidebar-width: 20%;
+    --header-height: 139px
 }
 
 body {
     margin: 0; 
     padding: 0; 
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
-    height: 2000px;
-}
-
-header {
-    margin-left: var(--sidebar-width);
+    height: 100%;
 }
 
 
@@ -23,6 +20,12 @@ header {
     }
     :root {
         --sidebar-width: 25%;
+    }
+    .sidebar {
+        display: none !important;
+    }
+    .main {
+        margin-left: 0 !important;
     }
 }
 
@@ -46,10 +49,16 @@ header {
     padding: 0.5rem 1rem;
     background: rgb(0,1,255);
     background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
+    border: 1px;
+    border-color: black;
+    border-style: none none solid none;
 }
 
 .topnav {
-    background-color: rgb(15, 136, 177);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
     overflow: hidden;
   }
   
@@ -81,52 +90,40 @@ header {
     font-size: 3rem;
 }
 
-.header-right a {
-    text-align: center;
-    text-decoration: none;
-    color: black;
-}
-
-.header-right:hover {
-    background-color: red;
-}
-
 .sidebar {
-    position: fixed;
-    top: 0;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--header-height);
+    height: 200%;
     width: var(--sidebar-width);
-    background-color: rgb(0, 217, 255);
+    background-color: rgb(29, 112, 139);
 }
 
 .sidebar-header {
-    padding-left: 10px;
+    padding: 1em;
 }
 
 .sidebar-title {
     font-size: 20pt;
-    text-decoration: underline;
-}
-
-.sidebar-links {
-    display: flex;
-    flex-direction: column;
+    text-align: center;
+    margin: 0;
 }
 
 .sidebar-link {
-    text-decoration: none;
-    font-size: 1.5em;
-    margin: 10px 0px 10px 0px;
     color: white;
+    display: block;
+    padding: 15px 15px 15px 15px;
+    text-decoration: none;
+    font-size: 17pt;
 }
 
 .sidebar-link:hover {
     text-decoration: underline;
-    background-color: #03B1E2;
 }
 
 .main {
-    margin-left: var(--sidebar-width);
+    margin-left: 20%;
 }
 
 .footer-content {
@@ -154,4 +151,24 @@ header {
     text-decoration: none;
     padding: 5px 10px 5px 10px;
     color: black;
+}
+
+.main {
+    padding: 60px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 60px 60px;
+    grid-template-rows: auto;
+    background-color: #28D0A3;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: #f2f2f2;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
 }
