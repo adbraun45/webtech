@@ -1,24 +1,216 @@
-<html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>quiz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            .play_btn {
-                background-color: grey;
-                text-decoration: none;
-                color: black;
-                font-size: 32px;
-                padding: 10px;
-                border-radius: 25px;
+        <meta charset="UTF-8">
+        <meta name="author" content="Adam Brown">
+        <meta name="desciption" content="Quiz Website">
+        <link rel="stylesheet" href="grid.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            let currSelection = ""
+            function popupShow(x) {
+                currSelection = x.textContent.toLowerCase();
+                popup = document.getElementById("category-select-menu");
+                popup.style.visibility = "visible";
+                console.log(currSelection)
             }
-            .play_btn:hover {
-                filter: brightness(70%);
+            function popupHide(x) {
+
+                popup = document.getElementById("category-select-menu");
+                popup.style.visibility = "hidden";
             }
-        </style>
+        </script>
     </head>
-    <body style="margin: 0%;">
-        <h1 style="background-color: blueviolet; padding: 3px;">ADAM TEST QUIZ</h1>
-        <a class="play_btn" href="quiz.html">Play quiz</a>
-        <a href="quiz.html?colour=blue&sort=newest">test</a>
+    <body>
+        <div id="grid-wrapper">
+            <header class="header">
+                <div class="header-left"></div>
+                <div class="header-center">
+                    <a href="https://adbraun45.github.io/webtech/">
+                        <img class="header-logo" id="large-image" src="images/logo-large.png" alt="Site logo and title" title="Quiz Website">
+                        <img class="header-logo" id="small-image" src="images/logo-small.png" alt="Site logo and title" title="Quiz Website"> 
+                    </a>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-link">
+                        <img src="images/trophy.png" alt="" width="50px" height="50px">
+                        <div>
+                            Highscores
+                        </div>
+                    </a>
+                </div>
+            </header>
+
+
+            <nav class="sidebar">
+                <div class="sidebar-title">
+                    Categories
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">General Knowledge</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Animals</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Books</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Celebrities</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Computers</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Geography</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div> 
+                <div class="dropdown">
+                    <div class="sidebar-link">Film</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">History</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Music</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Politics</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Sports</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Television</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Vehicles</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Video Games</div>
+                    <div class="dropdown-content">
+                        <a href="#">Easy</a>
+                        <a href="#">Medium</a>
+                        <a href="#">Hard</a>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="main-content">
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">General Knowledge</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Animals</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Books</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Celebrities</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Computers</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Geography</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Film</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">History</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Music</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Politics</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Sports</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Television</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Vehicles</button>
+                <button class="grid-item-main" onclick="popupShow(this)" onfocusout="popupHide(this)">Video Games</button>
+            </main>
+
+            <div class="popup-content" id="category-select-menu">
+                    <img src="images/close.png" alt="" onclick="popupHide(this)">
+                    <div class="popup-option">Easy</div>
+                    <div class="popup-option">Medium</div>
+                    <div class="popup-option">Hard</div>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-link">
+                    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fadbraun45.github.io%2Fwebtech%2F&text=Try%20This%20Quiz%20Website%20and%20See%20How%20High%20You%20Can%20Score" target="_blank">
+                        <img src="images/twitter-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                        <div class="footer-link-text">Twitter</div>
+                    </a>
+                </div>
+                <div class="footer-link">
+                    <a href="#">
+                        <img src="images/contact-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                        <div class="footer-link-text">Contact</div>
+                    </a>
+                </div>
+                <div class="footer-link">
+                    <a href="https://github.com/adbraun45/webtech" target="_blank">
+                        <img src="images/github-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                        <div class="footer-link-text">Github</div>
+                    </a>
+                </div>
+                <div class="footer-link">
+                    <a href="mailto:placeholderemail@example.com">
+                        <img src="images/help-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                        <div class="footer-link-text">Help</div>
+                    </a>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>
