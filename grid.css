@@ -8,20 +8,9 @@ body {
     overflow: hidden;
 }
 
-@media only screen and (max-height: 1200px) {
-    .sidebar {
-        display: none !important;
-        grid-column: 1 / 1;
-    }
-    .main-content {
-        grid-column: 1 / 11 !important;
-        grid-template-columns: repeat(1, 1fr) !important;
-        grid-template-rows: repeat(14, minmax(175px, auto)) !important;
-        padding: 15px !important;
-    }
-    #category-select-menu {
-        left: 10% !important;
-        width: 80% !important;
+@media screen and (max-height: 1023px) {
+    .sidebar-link {
+        padding: 0px !important;
     }
 }
 
@@ -109,7 +98,7 @@ body {
     color: white;
     background-color: rgb(14, 88, 112);
     font-weight: bold;
-    font-size: 22pt;
+    font-size: 21pt;
     text-align: center;
     padding: 15px;
 }
@@ -117,7 +106,7 @@ body {
 .sidebar-link {
     color: white;
     display: block;
-    padding: 15px 25px 15px 25px;
+    padding: 10px 15px;
     text-decoration: none;
     font-size: 17pt;
 }
@@ -219,7 +208,7 @@ body {
   .dropdown-content a {
     color: white;
     padding: 15px 16px;
-    height: 30px;
+    height: 20px;
     text-decoration: none;
     display: block;
   }
