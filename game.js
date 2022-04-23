@@ -1,5 +1,6 @@
 //let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple";
 
+
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 let api_url = test()
