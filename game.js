@@ -1,26 +1,26 @@
-let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple";
-
-printJSON()
+//let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple";
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 let api_url2 = test()
-window.onload = sendApiRequest(api_url) // change to find url when more category implemented
+window.onload = sendApiRequest(api_url2) // change to find url when more category implemented
 let score = 0;
 let q_num = 1;
 var correctSound = new Audio('correct.mp3');
 var incorrectSound = new Audio('wrong.mp3');
 
-async function printJSON() {
+async function printJSON(categoryText) {
     const response = await fetch("https://raw.githubusercontent.com/adbraun45/webtech/main/catagory_IDs.json");
     const json = await response.json();
-    console.log(json);
+    console.log(json[categoryText])
+    return json[categoryText]
 }
 
 function test() {
-    category = params["category"]
-    diffculty = params["diffculty"]
-    url = `https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple`
+    category = printJSON();
+    diffculty = params["diffculty"];
+    url = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${diffculty}&type=multiple`;
+    return url;
 }
 
 async function sendApiRequest(request) {
