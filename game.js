@@ -2,8 +2,8 @@
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
-let api_url2 = test()
-window.onload = sendApiRequest(api_url2) // change to find url when more category implemented
+let api_url = test()
+window.onload = sendApiRequest(api_url) // change to find url when more category implemented
 let score = 0;
 let q_num = 1;
 var correctSound = new Audio('correct.mp3');
