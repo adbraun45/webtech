@@ -1,5 +1,22 @@
 //let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple";
-
+jsondata = {
+	"categories": {
+		"general knowledge": 9,
+		"animals": 27,
+		"books": 10,
+		"celebrities": 26,
+		"computers": 18,
+		"geography": 22,
+		"film": 11,
+		"history": 23,
+		"music": 12,
+		"politics": 24,
+		"sports": 21,
+		"television": 14,
+		"vehicles": 28,
+		"video games": 15
+	}
+}
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
@@ -18,9 +35,11 @@ async function printJSON(categoryText) {
 }
 
 function test() {
-    category = printJSON();
-    diffculty = params["diffculty"];
+    console.log(urlSearchParams.get("category"))
+    category = jsondata["categories"][urlSearchParams.get("category")];
+    diffculty = urlSearchParams.get("difficulty");
     url = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${diffculty}&type=multiple`;
+    console.log(url)
     return url;
 }
 
