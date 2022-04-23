@@ -239,6 +239,11 @@ body {
     margin-right: 32px;
 }
 
+.popup-option:hover{
+    cursor: pointer;
+}
+
+
 .popup-content img{
     float: right;
     width: 32px;

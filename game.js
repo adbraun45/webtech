@@ -1,8 +1,27 @@
-let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple"
+let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple";
+
+printJSON()
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+let api_url2 = test()
 window.onload = sendApiRequest(api_url) // change to find url when more category implemented
-let q_num = 1
+let score = 0;
+let q_num = 1;
 var correctSound = new Audio('correct.mp3');
 var incorrectSound = new Audio('wrong.mp3');
+
+async function printJSON() {
+    const response = await fetch("./category_IDs.json");
+    const json = await response.json();
+    console.log(json);
+}
+
+function test() {
+    category = params["category"]
+    diffculty = params["diffculty"]
+    url = `https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple`
+}
 
 async function sendApiRequest(request) {
     let response = await fetch(api_url);
@@ -14,6 +33,18 @@ async function sendApiRequest(request) {
 
 function useApiData(data) {
     document.querySelector("#question").innerHTML = `Question ${q_num}: ${data.results[0].question}`
+
+    const mySentence = params["category"];
+    const words = mySentence.split(" ");
+
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+
+    words.join(" ");
+    
+
+    document.querySelector(".category").innerHTML = `Category: ${words.join(" ")}`
     q_num++
     elems = document.getElementsByClassName("answer")
     var button_array = Array.from(elems);

@@ -2,19 +2,407 @@
     <head>
         <title>quiz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/json" src="catagory_IDs.json"></script>
         <script src="game.js" defer></script>
         <style>
+            html { height: 100%; }
+
+            body {
+                margin: 0; 
+                padding: 0; 
+                height: 100%;
+                font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
+                overflow: hidden;
+            }
+
             button {
                 background-color: aliceblue;
+            }
+
+            .header {
+                background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: black;
+                border-width: 2px;
+                border-style: none none solid none;
+            }
+
+            .header-link {
+                display: inline;
+                text-decoration: none;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+            }
+
+            .header-right {
+                padding: 10px;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            #large-image {
+                height: 73px;
+                width: 500px;
+            }
+
+            #small-image {
+                display: none;
+                height: 73px;
+                width: 65px;
+            }
+
+            .sidebar {
+                width: 20%;
+                background-color: rgb(53, 142, 172);
+            }
+
+            .main-content {
+            }
+
+            .sidebar-title {
+                color: white;
+                background-color: rgb(14, 88, 112);
+                font-weight: bold;
+                font-size: 21pt;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .sidebar-link {
+                color: white;
+                display: block;
+                padding: 10px 15px;
+                text-decoration: none;
+                font-size: 17pt;
+            }
+
+            .sidebar-link:hover {
+                background-color: rgb(14, 88, 112);
+            }
+
+            .dropdown {
+                position: relative;
+                display: block;
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 100%;
+                text-align: center;
+                width: 50%;
+                background-color: rgb(79, 175, 207);
+                box-shadow: 5px 10px 18px rgba(0,0,0,0.5);
+                z-index: 1;
+            }
+            
+            .dropdown-content a {
+                color: white;
+                padding: 15px 16px;
+                height: 20px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .main {
+                overflow: scroll;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .main::-webkit-scrollbar {
+                display: none;
+            }
+
+            .main {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+  
+            .dropdown-content a:hover {background-color: rgb(14, 88, 112); font-weight: bold;}
+            
+            .dropdown:hover .dropdown-content {display: block;}
+            
+            .dropdown:hover .sidebar-link {background-color: rgb(14, 88, 112);}
+
+            .footer {
+                position: fixed;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: end;
+                align-items: center;
+                color: white;
+                background-color: rgb(117, 203, 243);
+                bottom: 0;
+            }
+
+            .footer-link {
+                padding: 5px 10px 5px 10px;
+                text-align: center;
+            }
+
+            .footer-link a {
+                text-decoration: none;
+            }
+
+            .footer-link-text {
+                color: black;
+            }
+
+            .footer-link-image {
+                width: 30px;
+                height: 30px;
+            }
+
+            @media only screen and (max-width: 800px) {
+                #large-image {
+                    display: none !important;
+                }
+                #small-image {
+                    display: block !important;
+                }
+            }
+
+            .quiz-content {
+                width: 100%;
+                padding: 2.5%;
+                background-color: rgb(74, 192, 231);
+                
+            }
+
+            .category {
+                font-weight: bold;
+                font-size: 3em;
+                color: white;
+                text-align: center;
+            }
+
+            .options {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .answer {
+                padding: 50px;
+            }
+
+            .quiz-scores {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin: 30px 0px 30px 0px;
+
+                color: white;
+                font-size: 2em;
+                font-weight: bold;
+            }
+
+            .score {
+                grid-column: 1 / 2;
+                text-align: left;
+            }
+
+            .highscore {
+                grid-column: 2 / 3;
+                text-align: right;
+            }
+
+            #question {
+                margin: 30px 0px 30px 0px;
             }
         </style>
     </head>
     <body>
-        <h1>THE QUESTION PAGE</h1>
-        <p id="question"></p>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
-        <button class="answer"></button>
+        <header class="header">
+            <div class="header-left"></div>
+            <div class="header-center">
+                <a href="https://adbraun45.github.io/webtech/">
+                    <img class="header-logo" id="large-image" src="images/logo-large.png" alt="Site logo and title" title="Quiz Website">
+                    <img class="header-logo" id="small-image" src="images/logo-small.png" alt="Site logo and title" title="Quiz Website"> 
+                </a>
+            </div>
+            <div class="header-right">
+                <a href="#" class="header-link">
+                    <img src="images/trophy.png" alt="" width="50px" height="50px">
+                    <div>
+                        Highscores
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <div class="main">
+            <nav class="sidebar">
+                <div class="sidebar-title">
+                    Categories
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">General Knowledge</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=general knowledge&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=general knowledge&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=general knowledge&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Animals</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=animals&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=animals&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=animals&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Books</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=books&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=books&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=books&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Celebrities</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=celebrities&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=celebrities&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=celebrities&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Computers</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=computers&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=computers&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=computers&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Geography</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=geography&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=geography&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=geography&difficulty=hard">Hard</a>
+                    </div>
+                </div> 
+                <div class="dropdown">
+                    <div class="sidebar-link">Film</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=film&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=film&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=film&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">History</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=history&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=history&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=history&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Music</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=music&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=music&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=music&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Politics</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=politics&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=politics&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=politics&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Sports</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=sports&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=sports&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=sports&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Television</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=television&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=television&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=television&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Vehicles</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=vehicles&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=vehicles&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=vehicles&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="sidebar-link">Video Games</div>
+                    <div class="dropdown-content">
+                        <a href="quiz.html?category=video games&difficulty=easy">Easy</a>
+                        <a href="quiz.html?category=video games&difficulty=medium">Medium</a>
+                        <a href="quiz.html?category=video games&difficulty=hard">Hard</a>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="quiz-content">
+                
+                <div class="category">Category</div>
+                <div class="quiz-scores">
+                    <div class="score">
+                        Score: <span id="score">0</span>
+                    </div>
+                    <div class="highscore">
+                        Highscore: <span id="highscore">0</span>
+                    </div>
+                </div>
+                <div id="question"></div>
+                <div class="options">
+                    <button class="answer"></button>
+                    <button class="answer"></button>
+                    <button class="answer"></button>
+                    <button class="answer"></button>
+                </div> 
+            </main>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-link">
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fadbraun45.github.io%2Fwebtech%2F&text=Try%20This%20Quiz%20Website%20and%20See%20How%20High%20You%20Can%20Score" target="_blank">
+                    <img src="images/twitter-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Twitter</div>
+                </a>
+            </div>
+            <div class="footer-link">
+                <a href="#">
+                    <img src="images/contact-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Contact</div>
+                </a>
+            </div>
+            <div class="footer-link">
+                <a href="https://github.com/adbraun45/webtech" target="_blank">
+                    <img src="images/github-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Github</div>
+                </a>
+            </div>
+            <div class="footer-link">
+                <a href="mailto:placeholderemail@example.com">
+                    <img src="images/help-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Help</div>
+                </a>
+            </div>
+        </footer>
     </body>
 </html>
