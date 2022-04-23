@@ -12,7 +12,7 @@ var correctSound = new Audio('correct.mp3');
 var incorrectSound = new Audio('wrong.mp3');
 
 async function printJSON() {
-    const response = await fetch("./category_IDs.json");
+    const response = await fetch("https://raw.githubusercontent.com/adbraun45/webtech/main/catagory_IDs.json");
     const json = await response.json();
     console.log(json);
 }
