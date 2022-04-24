@@ -1,44 +1,23 @@
-//let api_url = "https://opentdb.com/api.php?amount=1&category=9&type=multiple";
-let jsondata = {
-	"categories": {
-		"general knowledge": 9,
-		"animals": 27,
-		"books": 10,
-		"celebrities": 26,
-		"computers": 18,
-		"geography": 22,
-		"film": 11,
-		"history": 23,
-		"music": 12,
-		"politics": 24,
-		"sports": 21,
-		"television": 14,
-		"vehicles": 28,
-		"video games": 15
-	}
-}
-
+//get the url search parameters
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
-let api_url = buildApiUrl()
-window.onload = sendApiRequest(api_url) // change to find url when more category implemented
+
+const apiURL = generateQuestion()
+sendApiRequest(apiURL)
 
 let score = 0;
-let q_num = 1;
+let questionNumber = 1;
 
 var correctSound = new Audio('correct.mp3');
 var incorrectSound = new Audio('wrong.mp3');
 
 
-async function buildApiUrl() {
+function generateQuestion() {
     // use url search parameters to get desired category and difficulty
-    categoryName = urlSearchParams.get("category");
+    category = urlSearchParams.get("category");
     diffculty = urlSearchParams.get("difficulty");
-    category = await getCategoryID(categoryName);
-    //category = await getCategoryID(categoryName)
-    //category = jsondata["categories"][urlSearchParams.get("category")];
     url = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${diffculty}&type=multiple`;
-    return url;
+    return url
 }
 
 async function getCategoryID(categoryName) {
@@ -48,29 +27,16 @@ async function getCategoryID(categoryName) {
     return categoryID
 }
 
-async function sendApiRequest(request) {
-    console.log(api_url)
-    let response = await fetch(api_url);
+async function sendApiRequest(apiURL) {
+    let response = await fetch(apiURL);
     let data = await response.json()
-    console.log(data)
     useApiData(data)
 }
 
 function useApiData(data) {
-    document.querySelector("#question").innerHTML = `Question ${q_num}: ${data.results[0].question}`
-
-    const mySentence = params["category"];
-    const words = mySentence.split(" ");
-
-    for (let i = 0; i < words.length; i++) {
-        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-    }
-
-    words.join(" ");
-    
-
-    document.querySelector(".category").innerHTML = `Category: ${words.join(" ")}`
-    q_num++
+    document.querySelector("#question").innerHTML = `Question ${questionNumber}: ${data.results[0].question}`
+    document.querySelector(".category").innerHTML = `Category: ${data.results[0].category}`
+    questionNumber++
     elems = document.getElementsByClassName("answer")
     var button_array = Array.from(elems);
 
@@ -122,5 +88,5 @@ function correctClicked() {
         item.replaceWith(item.cloneNode(true));
     }
 
-    sendApiRequest()
+    sendApiRequest(apiURL)
 }

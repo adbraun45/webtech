@@ -1,30 +1,50 @@
 <html lang="en" xml:lang="en">
     <head>
         <title>quiz</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <meta name="author" content="Adam Brown">
         <meta name="desciption" content="Quiz Website">
-        <link rel="stylesheet" href="stylesheet/quiz.css">
-        <script src="javascript/game.js" defer></script>
+        <link rel="stylesheet" href="stylesheet/highscore.css">
+        <script src="javascript/highscore.js" defer></script>
+
+        <style>
+            table, th, td {
+                border:1px solid black;
+                background-color: white;
+            }
+
+            .hard {
+                background-color: red !important;
+            }
+            .medium {
+                background-color: yellow !important;
+            }
+            .easy {
+                background-color: green !important;
+            }
+            .general {
+                background-color: blueviolet;
+            }
+        </style>
     </head>
     <body>
         <header class="header">
             <div class="header-left"></div>
-            <div class="header-center">
-                <a href="https://adbraun45.github.io/webtech/">
-                    <img class="header-logo" id="large-image" src="images/logo-large.png" alt="Site logo and title" title="Quiz Website">
-                    <img class="header-logo" id="small-image" src="images/logo-small.png" alt="Site logo and title" title="Quiz Website"> 
-                </a>
-            </div>
-            <div class="header-right">
-                <a href="highscore.html" class="header-link">
-                    <img src="images/trophy.png" alt="" width="50px" height="50px">
-                    <div>
-                        Highscores
-                    </div>
-                </a>
-            </div>
+                <div class="header-center">
+                    <a href="https://adbraun45.github.io/webtech/">
+                        <img class="header-logo" id="large-image" src="images/logo-large.png" alt="Site logo and title" title="Quiz Website">
+                        <img class="header-logo" id="small-image" src="images/logo-small.png" alt="Site logo and title" title="Quiz Website"> 
+                    </a>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-link">
+                        <img src="images/trophy.png" alt="" width="50px" height="50px">
+                        <div>
+                            Highscores
+                        </div>
+                    </a>
+                </div>
         </header>
 
         <div class="main">
@@ -147,23 +167,98 @@
             </nav>
 
             <main class="quiz-content">
-                
-                <div class="category">Category</div>
-                <div class="quiz-scores">
-                    <div class="score">
-                        Score: <span id="score">0</span>
-                    </div>
-                    <div class="highscore">
-                        Highscore: <span id="highscore">0</span>
-                    </div>
-                </div>
-                <div id="question"></div>
-                <div class="options">
-                    <button class="answer"></button>
-                    <button class="answer"></button>
-                    <button class="answer"></button>
-                    <button class="answer"></button>
-                </div> 
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th>Easy</th>
+                        <th>Medium</th>
+                        <th>Hard</th>
+                    </tr>
+                    <tr>
+                        <th>General Knowledge</th>
+                        <td class="general-knowledge easy"></td>
+                        <td class="general-knowledge medium"></td>
+                        <td class="general-knowledge hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Animals</th>
+                        <td class="animals easy"></td>
+                        <td class="animals medium"></td>
+                        <td class="animals hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Books</th>
+                        <td class="books easy"></td>
+                        <td class="books medium"></td>
+                        <td class="books hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Celebrities</th>
+                        <td class="celebrities easy"></td>
+                        <td class="celebrities medium"></td>
+                        <td class="celebrities hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Computers</th>
+                        <td class="computers easy"></td>
+                        <td class="computers medium"></td>
+                        <td class="computers hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Geography</th>
+                        <td class="geography easy"></td>
+                        <td class="geography medium"></td>
+                        <td class="geography hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Film</th>
+                        <td class="film easy"></td>
+                        <td class="film medium"></td>
+                        <td class="film hard"></td>
+                    </tr>
+                    <tr>
+                        <th>History</th>
+                        <td class="history easy"></td>
+                        <td class="history medium"></td>
+                        <td class="history hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Music</th>
+                        <td class="music easy"></td>
+                        <td class="music medium"></td>
+                        <td class="music hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Politics</th>
+                        <td class="politics easy"></td>
+                        <td class="politics medium"></td>
+                        <td class="politics hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Sports</th>
+                        <td class="sports easy"></td>
+                        <td class="sports medium"></td>
+                        <td class="sports hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Television</th>
+                        <td class="television easy"></td>
+                        <td class="television medium"></td>
+                        <td class="television hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Vehicles</th>
+                        <td class="vehicles easy"></td>
+                        <td class="vehicles medium"></td>
+                        <td class="vehicles hard"></td>
+                    </tr>
+                    <tr>
+                        <th>Video Games</th>
+                        <td class="video-games easy"></td>
+                        <td class="video-games medium"></td>
+                        <td class="video-games hard"></td>
+                    </tr>
+                  </table>
             </main>
         </div>
 
