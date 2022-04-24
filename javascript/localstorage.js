@@ -1,75 +1,75 @@
 // initialise local storage
 let ls = window.localStorage
 
-const deafaultScores = {
+const defaultScores = {
     "categories":[
         {
-            "general-knowledge":{
+            "9":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "animals":{
+            "27":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "books":{
+            "10":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "celebrities":{
+            "26":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "computers":{
+            "18":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "geography":{
+            "22":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "film":{
+            "11":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "history":{
+            "23":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "music":{
+            "12":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "politics":{
+            "24":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "sports":{
+            "21":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "television":{
+            "14":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "vehicles":{
+            "28":{
                 "easy":0,
                 "medium":0,
                 "hard":0
             },
-            "video-games":{
+            "15":{
                 "easy":0,
                 "medium":0,
                 "hard":0
@@ -80,7 +80,7 @@ const deafaultScores = {
 
 
 if (!ls.hasOwnProperty("highscores")) {
-    ls.setItem("highscores", JSON.stringify(deafaultScores))
+    ls.setItem("highscores", JSON.stringify(defaultScores))
 } else {
     console.log("Local Storage already initialized")
 }

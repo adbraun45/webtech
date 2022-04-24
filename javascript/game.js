@@ -1,11 +1,18 @@
 //get the url search parameters
 const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
+let categoryID = urlSearchParams.get("category");
+let categoryName = ""
+let diffculty = urlSearchParams.get("difficulty");
 
-const apiURL = generateQuestion()
-sendApiRequest(apiURL)
+const apiURL = generateQuestion();
+let currentCategory = sendApiRequest(apiURL);
 
 let score = 0;
+
+let highscores =JSON.parse(window.localStorage.getItem("highscores"))
+    
+let highscore = highscores["categories"][0][categoryID][diffculty]
+
 let questionNumber = 1;
 
 var correctSound = new Audio('correct.mp3');
@@ -14,17 +21,8 @@ var incorrectSound = new Audio('wrong.mp3');
 
 function generateQuestion() {
     // use url search parameters to get desired category and difficulty
-    category = urlSearchParams.get("category");
-    diffculty = urlSearchParams.get("difficulty");
-    url = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${diffculty}&type=multiple`;
+    url = `https://opentdb.com/api.php?amount=1&category=${categoryID}&difficulty=${diffculty}&type=multiple`;
     return url
-}
-
-async function getCategoryID(categoryName) {
-    const response = await fetch("https://raw.githubusercontent.com/adbraun45/webtech/main/category_IDs.json");
-    const json = await response.json();
-    let categoryID = json["categories"][categoryName];
-    return categoryID
 }
 
 async function sendApiRequest(apiURL) {
@@ -35,7 +33,15 @@ async function sendApiRequest(apiURL) {
 
 function useApiData(data) {
     document.querySelector("#question").innerHTML = `Question ${questionNumber}: ${data.results[0].question}`
-    document.querySelector(".category").innerHTML = `Category: ${data.results[0].category}`
+
+    document.querySelector("#score").innerHTML = `Score: ${score}`
+    document.querySelector("#highscore").innerHTML = `Highscore: ${highscore}`
+
+    // remove extra info from category
+    categoryFull = data.results[0].category
+    categorySplit = categoryFull.split(": ")
+    categoryName = categorySplit.at(-1)
+    document.querySelector(".category").innerHTML = `Category: ${categoryName}`
     questionNumber++
     elems = document.getElementsByClassName("answer")
     var button_array = Array.from(elems);
@@ -65,8 +71,8 @@ function useApiData(data) {
 }
 
 function wrongClicked() {
-    console.log("wrong Answer Clicked");
     incorrectSound.play();
+    window.localStorage.setItem("highscores", JSON.stringify(highscores))
     document.getElementById('correct_answer').style.backgroundColor = "lightgreen"
     //document.getElementsByClassName("incorrect_answer").style.backgroundcolor = "red"
     elements = document.getElementsByClassName('incorrect_answer');
@@ -78,15 +84,22 @@ function wrongClicked() {
 }
 
 function correctClicked() {
-    console.log("Correct Answer Clicked");
+    score++
+    compareHighscores()
     correctSound.play();
 
     butns = document.getElementsByClassName("answer")
     for (let i = 0; i < butns.length; i++) {
         item = butns[i]
-        console.log(item)
         item.replaceWith(item.cloneNode(true));
     }
 
     sendApiRequest(apiURL)
+}
+
+function compareHighscores() {
+    if (score > highscore) {
+        highscore = score;
+        highscores["categories"][0][categoryID][diffculty] = score
+    }
 }
