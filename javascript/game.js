@@ -4,9 +4,6 @@ let categoryID = urlSearchParams.get("category");
 let categoryName = ""
 let diffculty = urlSearchParams.get("difficulty");
 
-const apiURL = generateQuestion();
-let currentCategory = sendApiRequest(apiURL);
-
 let score = 0;
 
 let highscores =JSON.parse(window.localStorage.getItem("highscores"))
@@ -14,6 +11,9 @@ let highscores =JSON.parse(window.localStorage.getItem("highscores"))
 let highscore = highscores["categories"][0][categoryID][diffculty]
 
 let questionNumber = 1;
+
+const apiURL = generateQuestion();
+let currentCategory = sendApiRequest(apiURL);
 
 var correctSound = new Audio('correct.mp3');
 var incorrectSound = new Audio('wrong.mp3');
