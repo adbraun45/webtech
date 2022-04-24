@@ -30,7 +30,7 @@ var correctSound = new Audio('correct.mp3');
 var incorrectSound = new Audio('wrong.mp3');
 
 async function getCategoryID(categoryName) {
-    const response = await fetch("https://raw.githubusercontent.com/adbraun45/webtech/main/catagory_IDs.json");
+    const response = await fetch("https://raw.githubusercontent.com/adbraun45/webtech/main/category_IDs.json");
     const json = await response.json();
     console.log(json["categories"])
     return json["categories"][categoryName]
