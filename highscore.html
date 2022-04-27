@@ -8,32 +8,13 @@
         <link rel="stylesheet" href="stylesheet/highscore.css">
         <script src="javascript/localstorage.js" defer></script>
         <script src="javascript/highscore.js" defer></script>
-
-        <style>
-            table, th, td {
-                border:1px solid black;
-                background-color: white;
-            }
-
-            .hard {
-                background-color: red !important;
-            }
-            .medium {
-                background-color: yellow !important;
-            }
-            .easy {
-                background-color: green !important;
-            }
-            .general {
-                background-color: blueviolet;
-            }
-        </style>
+        <script src="javascript/help.js"></script>
     </head>
     <body>
         <header class="header">
             <div class="header-left"></div>
                 <div class="header-center">
-                    <a href="https://adbraun45.github.io/webtech/">
+                    <a href="/index.html">
                         <img class="header-logo" id="large-image" src="images/logo-large.png" alt="Site logo and title" title="Quiz Website">
                         <img class="header-logo" id="small-image" src="images/logo-small.png" alt="Site logo and title" title="Quiz Website"> 
                     </a>
@@ -48,7 +29,7 @@
                 </div>
         </header>
 
-        <div class="main">
+        <main class="main">
             <nav class="sidebar">
                 <div class="sidebar-title">
                     Categories
@@ -167,100 +148,110 @@
                 </div>
             </nav>
 
-            <main class="quiz-content">
+            <div class="highscore-table">
                 <table>
                     <tr>
-                        <td>&nbsp;</td>
-                        <th>Easy</th>
-                        <th>Medium</th>
-                        <th>Hard</th>
+                        <th class="category">Categories</th>
+                        <th class="easy">Easy</th>
+                        <th class="medium">Medium</th>
+                        <th class="Hard">Hard</th>
                     </tr>
                     <tr>
-                        <th>General Knowledge</th>
-                        <td class="general-knowledge easy"></td>
-                        <td class="general-knowledge medium"></td>
-                        <td class="general-knowledge hard"></td>
+                        <th class="category">General Knowledge</th>
+                        <td class="9 easy"><a href="google.com"></a></td>
+                        <td class="9 medium"></td>
+                        <td class="9 hard"></td>
                     </tr>
                     <tr>
-                        <th>Animals</th>
-                        <td class="animals easy"></td>
-                        <td class="animals medium"></td>
-                        <td class="animals hard"></td>
+                        <th class="category">Animals</th>
+                        <td class="27 easy"></td>
+                        <td class="27 medium"></td>
+                        <td class="27 hard"></td>
                     </tr>
                     <tr>
-                        <th>Books</th>
-                        <td class="books easy"></td>
-                        <td class="books medium"></td>
-                        <td class="books hard"></td>
+                        <th class="category">Books</th>
+                        <td class="10 easy"></td>
+                        <td class="10 medium"></td>
+                        <td class="10 hard"></td>
                     </tr>
                     <tr>
-                        <th>Celebrities</th>
-                        <td class="celebrities easy"></td>
-                        <td class="celebrities medium"></td>
-                        <td class="celebrities hard"></td>
+                        <th class="category">Celebrities</th>
+                        <td class="26 easy"></td>
+                        <td class="26 medium"></td>
+                        <td class="26 hard"></td>
                     </tr>
                     <tr>
-                        <th>Computers</th>
-                        <td class="computers easy"></td>
-                        <td class="computers medium"></td>
-                        <td class="computers hard"></td>
+                        <th class="category">Computers</th>
+                        <td class="18 easy"></td>
+                        <td class="18 medium"></td>
+                        <td class="18 hard"></td>
                     </tr>
                     <tr>
-                        <th>Geography</th>
-                        <td class="geography easy"></td>
-                        <td class="geography medium"></td>
-                        <td class="geography hard"></td>
+                        <th class="category">Geography</th>
+                        <td class="22 easy"></td>
+                        <td class="22 medium"></td>
+                        <td class="22 hard"></td>
                     </tr>
                     <tr>
-                        <th>Film</th>
-                        <td class="film easy"></td>
-                        <td class="film medium"></td>
-                        <td class="film hard"></td>
+                        <th class="category">Film</th>
+                        <td class="11 easy"></td>
+                        <td class="11 medium"></td>
+                        <td class="11 hard"></td>
                     </tr>
                     <tr>
-                        <th>History</th>
-                        <td class="history easy"></td>
-                        <td class="history medium"></td>
-                        <td class="history hard"></td>
+                        <th class="category">History</th>
+                        <td class="23 easy"></td>
+                        <td class="23 medium"></td>
+                        <td class="23 hard"></td>
                     </tr>
                     <tr>
-                        <th>Music</th>
-                        <td class="music easy"></td>
-                        <td class="music medium"></td>
-                        <td class="music hard"></td>
+                        <th class="category">Music</th>
+                        <td class="12 easy"></td>
+                        <td class="12 medium"></td>
+                        <td class="12 hard"></td>
                     </tr>
                     <tr>
-                        <th>Politics</th>
-                        <td class="politics easy"></td>
-                        <td class="politics medium"></td>
-                        <td class="politics hard"></td>
+                        <th class="category">Politics</th>
+                        <td class="24 easy"></td>
+                        <td class="24 medium"></td>
+                        <td class="24 hard"></td>
                     </tr>
                     <tr>
-                        <th>Sports</th>
-                        <td class="sports easy"></td>
-                        <td class="sports medium"></td>
-                        <td class="sports hard"></td>
+                        <th class="category">Sports</th>
+                        <td class="21 easy"></td>
+                        <td class="21 medium"></td>
+                        <td class="21 hard"></td>
                     </tr>
                     <tr>
-                        <th>Television</th>
-                        <td class="television easy"></td>
-                        <td class="television medium"></td>
-                        <td class="television hard"></td>
+                        <th class="category">Television</th>
+                        <td class="14 easy"></td>
+                        <td class="14 medium"></td>
+                        <td class="14 hard"></td>
                     </tr>
                     <tr>
-                        <th>Vehicles</th>
-                        <td class="vehicles easy"></td>
-                        <td class="vehicles medium"></td>
-                        <td class="vehicles hard"></td>
+                        <th class="category">Vehicles</th>
+                        <td class="28 easy"></td>
+                        <td class="28 medium"></td>
+                        <td class="28 hard"></td>
                     </tr>
                     <tr>
-                        <th>Video Games</th>
-                        <td class="video-games easy"></td>
-                        <td class="video-games medium"></td>
-                        <td class="video-games hard"></td>
+                        <th class="category">Video Games</th>
+                        <td class="15 easy"></td>
+                        <td class="15 medium"></td>
+                        <td class="15 hard"></td>
                     </tr>
                   </table>
-            </main>
+            </div>
+        </main>
+
+        <div id="help-popup">
+            <img class="help-close" src="images/close.png" alt="" onclick="closeHelp(this)">
+            <div class="help-text">
+                <div>1 - Pick a category</div>
+                <div>2 - Answer as many questions in a row as possible</div>
+                <div>3 - Highscores are tracked during the game</div>
+                <div>4 - High scores for each category can be viewed on the highscore page</div>
+            </div>
         </div>
 
         <footer class="footer">
@@ -282,11 +273,9 @@
                     <div class="footer-link-text">Github</div>
                 </a>
             </div>
-            <div class="footer-link">
-                <a href="#">
+            <div class="footer-link" onclick="toggleHelp()">
                     <img src="images/help-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
                     <div class="footer-link-text">Help</div>
-                </a>
             </div>
         </footer>
     </body>

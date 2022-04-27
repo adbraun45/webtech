@@ -1,16 +1,15 @@
 //get the url search parameters
 const urlSearchParams = new URLSearchParams(window.location.search);
 let categoryID = urlSearchParams.get("category");
-let categoryName = ""
+let categoryName
 let diffculty = urlSearchParams.get("difficulty");
 
+let questionNumber = 1;
 let score = 0;
 
-let highscores =JSON.parse(window.localStorage.getItem("highscores"))
+let highscores = JSON.parse(window.localStorage.getItem("highscores"))
     
 let highscore = highscores["categories"][0][categoryID][diffculty]
-
-let questionNumber = 1;
 
 const apiURL = generateQuestion();
 let currentCategory = sendApiRequest(apiURL);

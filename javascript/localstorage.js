@@ -81,6 +81,4 @@ const defaultScores = {
 
 if (!ls.hasOwnProperty("highscores")) {
     ls.setItem("highscores", JSON.stringify(defaultScores))
-} else {
-    console.log("Local Storage already initialized")
 }

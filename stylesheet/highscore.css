@@ -5,7 +5,6 @@ body {
     padding: 0; 
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
-    overflow: hidden;
 }
 
 .header {
@@ -108,20 +107,107 @@ body {
 
 .main {
     overflow: scroll;
-    height: 100%;
+    height: calc(100vh - 154px);
     display: flex;
     flex-direction: row;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .main::-webkit-scrollbar {
     display: none;
 }
 
-.main {
+.highscore-table {
+    overflow: scroll;
+    width: 100%;
+    padding: 2.5%;
+    background-color: rgb(74, 192, 231);
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
+.highscore-table::-webkit-scrollbar {
+    display: none;
+}
+
+.highscore-table table { 
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th.category {
+    font-size: 17px;
+    color: white;
+    width: 25%;
+    background-color: rgb(14, 88, 112);
+}
+
+th.easy, td.easy, th.medium, td.medium, th.hard, td.hard {
+    color: white;
+    width: 25%;
+}
+
+.highscore-table tr {
+    border-bottom: solid black 1px;
+}
+
+.highscore-table th {
+    padding: 10px;
+}
+
+.highscore-table td {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    background-color: rgb(53, 142, 172);
+}
+.easy, .medium, .hard {
+    border-width: 1px;
+    border: black;
+    border-style: none solid none solid;
+}
+
+th.easy {
+    background-color: green;
+}
+
+th.medium {
+    background-color: orange;
+}
+
+th.hard {
+    background-color: red;
+}
+
+
+#help-popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: auto;
+    background-color: white;
+    padding: 10px;
+    font-size: 20px;
+    border: black solid 3px;
+}
+
+.help-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.help-close {
+    float: right;
+
+    width: 32px;
+    height: 32px;
+}
 
 .footer {
     position: fixed;
@@ -151,24 +237,6 @@ body {
 .footer-link-image {
     width: 30px;
     height: 30px;
-}
-
-.quiz-content {
-    width: 100%;
-    padding: 2.5%;
-    background-color: rgb(74, 192, 231);
-}
-
-.footer {
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: end;
-    align-items: center;
-    color: white;
-    background-color: rgb(117, 203, 243);
-    bottom: 0;
 }
 
 .footer-link {
@@ -199,5 +267,29 @@ body {
     .sidebar {
         display: none;
     }
-    .category {font-size: 1.5em;}
+    .category {
+        font-size: 1.5em !important;
+    }
+    th.category {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+    }
+    .highscore-table td {
+        font-size: 20px !important;
+        font-weight: 400 !important;
+    }
+    th.category {
+        font-size: 12px !important;
+        width: auto;
+    }
+    th.easy, td.easy, th.medium, td.medium, th.hard, td.hard {
+        font-size: 12px;
+        width: 25%;
+    }
+}
+
+@media screen and (max-height: 1023px) {
+    .sidebar-link {
+        padding: 2px !important;
+    }
 }

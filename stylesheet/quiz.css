@@ -120,6 +120,32 @@ button {
 
 .dropdown:hover .sidebar-link {background-color: rgb(14, 88, 112);}
 
+#help-popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: auto;
+    background-color: white;
+    padding: 10px;
+    font-size: 20px;
+    border: black solid 3px;
+}
+
+.help-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.help-close {
+    float: right;
+    width: 32px;
+    height: 32px;
+}
+
 .footer {
     position: fixed;
     display: flex;
