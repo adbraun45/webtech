@@ -84,7 +84,7 @@ function wrongClicked() {
     document.getElementById('correct').style.backgroundColor = "green"
 
     // returns to homepage after incorrect answer is given
-    setTimeout(() => {window.location = "/";}, 1000);
+    setTimeout(() => {window.location = "https://adbraun45.github.io/webtech/";}, 1000);
 }
 
 function correctClicked() {
