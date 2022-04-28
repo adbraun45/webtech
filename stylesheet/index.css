@@ -215,7 +215,7 @@ html, body {
     height: 30px;
 }
 
-#category-select-menu {
+#difficulty-select-menu {
     display: none;
     position: fixed;
     left: 60%;
