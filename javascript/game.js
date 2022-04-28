@@ -36,11 +36,6 @@ function useApiData(data) {
     document.querySelector("#score").innerHTML = `Score: ${score}`
     document.querySelector("#highscore").innerHTML = `Highscore: ${highscore}`
 
-    answers = document.getElementsByClassName("answer")
-    for (var i = 0; i < answers.length; i++) {
-        answers[i].classList.remove("incorrect");
-    }
-
     // remove extra info from category
     categoryFull = data.results[0].category
     categorySplit = categoryFull.split(": ")
@@ -52,7 +47,6 @@ function useApiData(data) {
 
     for (let i = 0; i < 3; i++) {
         incorrect_button = button_array[Math.floor(Math.random()*button_array.length)];
-        incorrect_button.classList.add("incorrect")
         incorrect_button.innerHTML = data.results[0].incorrect_answers[i]
         index = button_array.indexOf(incorrect_button)
         button_array.splice(index, 1)
@@ -77,10 +71,6 @@ function useApiData(data) {
 function wrongClicked() {
     incorrectSound.play();
     document.getElementById('correct').style.backgroundColor = "green"
-    wrong_answers = document.getElementsByClassName('incorrect');
-    for (var i = 0; i < wrong_answers.length; i++) {
-        wrong_answers[i].style.backgroundColor = "red";
-    }
 
     setTimeout(() => {window.location = "index.html";}, 1000);
 }
@@ -89,6 +79,7 @@ function correctClicked() {
     score++
     compareHighscores()
     correctSound.play();
+    document.getElementById("correct").removeAttribute("id", "correct")
 
     butns = document.getElementsByClassName("answer")
     for (let i = 0; i < butns.length; i++) {
