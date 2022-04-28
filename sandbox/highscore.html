@@ -6,48 +6,31 @@
         <meta name="author" content="Adam Brown">
         <meta name="desciption" content="Quiz Website">
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-        <link rel="stylesheet" href="stylesheet/index.css">
+        <link rel="stylesheet" href="stylesheet/highscore.css">
+        <script src="javascript/localstorage.js" defer></script>
+        <script src="javascript/highscore.js" defer></script>
         <script src="javascript/help.js"></script>
-        <script>
-            let currSelection 
-            function popupShow(categoryID) {
-                currSelection = categoryID
-                popup = document.getElementById("category-select-menu");
-                popup.style.display = "block";
-            }
-            function popupHide(x) {
-                popup = document.getElementById("category-select-menu");
-                popup.style.display = "none";
-            }
-            function temp(x) {
-                category = currSelection;
-                difficulty = x.textContent.toLowerCase();
-                newURL = `quiz.html?category=${category}&difficulty=${difficulty}`;
-                window.location.href = newURL;
-            }
-        </script>
     </head>
     <body>
-        <div id="grid-wrapper">
-            <header class="header">
-                <div class="header-left"></div>
+        <header class="header">
+            <div class="header-left"></div>
                 <div class="header-center">
-                    <a href="/index.html">
+                    <a href="/">
                         <img class="header-logo" id="large-image" src="images/logo-large.png" alt="Site logo and title" title="Quiz Website">
                         <img class="header-logo" id="small-image" src="images/logo-small.png" alt="Site logo and title" title="Quiz Website"> 
                     </a>
                 </div>
                 <div class="header-right">
-                    <a href="highscore.html" class="header-link">
+                    <a href="#" class="header-link">
                         <img src="images/trophy.png" alt="" width="50px" height="50px">
                         <div>
                             Highscores
                         </div>
                     </a>
                 </div>
-            </header>
+        </header>
 
-
+        <main class="main">
             <nav class="sidebar">
                 <div class="sidebar-title">
                     Categories
@@ -166,66 +149,135 @@
                 </div>
             </nav>
 
-            <main class="main-content">
-                <button class="grid-item-main" onclick="popupShow(9)">General Knowledge</button>
-                <button class="grid-item-main" onclick="popupShow(27)">Animals</button>
-                <button class="grid-item-main" onclick="popupShow(10)">Books</button>
-                <button class="grid-item-main" onclick="popupShow(26)">Celebrities</button>
-                <button class="grid-item-main" onclick="popupShow(18)">Computers</button>
-                <button class="grid-item-main" onclick="popupShow(22)">Geography</button>
-                <button class="grid-item-main" onclick="popupShow(11)">Film</button>
-                <button class="grid-item-main" onclick="popupShow(23)">History</button>
-                <button class="grid-item-main" onclick="popupShow(12)">Music</button>
-                <button class="grid-item-main" onclick="popupShow(24)">Politics</button>
-                <button class="grid-item-main" onclick="popupShow(21)">Sports</button>
-                <button class="grid-item-main" onclick="popupShow(14)">Television</button>
-                <button class="grid-item-main" onclick="popupShow(28)">Vehicles</button>
-                <button class="grid-item-main" onclick="popupShow(15)">Video Games</button>
-            </main>
-
-            <div class="popup-content" id="category-select-menu">
-                    <img src="images/close.png" alt="" onclick="popupHide(this)">
-                    <div class="popup-option" onclick="temp(this)">Easy</div>
-                    <div class="popup-option" onclick="temp(this)">Medium</div>
-                    <div class="popup-option" onclick="temp(this)">Hard</div>
+            <div class="highscore-table">
+                <table>
+                    <tr>
+                        <th class="category">Categories</th>
+                        <th class="easy">Easy</th>
+                        <th class="medium">Medium</th>
+                        <th class="Hard">Hard</th>
+                    </tr>
+                    <tr>
+                        <th class="category">General Knowledge</th>
+                        <td class="9 easy"><a href="google.com"></a></td>
+                        <td class="9 medium"></td>
+                        <td class="9 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Animals</th>
+                        <td class="27 easy"></td>
+                        <td class="27 medium"></td>
+                        <td class="27 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Books</th>
+                        <td class="10 easy"></td>
+                        <td class="10 medium"></td>
+                        <td class="10 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Celebrities</th>
+                        <td class="26 easy"></td>
+                        <td class="26 medium"></td>
+                        <td class="26 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Computers</th>
+                        <td class="18 easy"></td>
+                        <td class="18 medium"></td>
+                        <td class="18 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Geography</th>
+                        <td class="22 easy"></td>
+                        <td class="22 medium"></td>
+                        <td class="22 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Film</th>
+                        <td class="11 easy"></td>
+                        <td class="11 medium"></td>
+                        <td class="11 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">History</th>
+                        <td class="23 easy"></td>
+                        <td class="23 medium"></td>
+                        <td class="23 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Music</th>
+                        <td class="12 easy"></td>
+                        <td class="12 medium"></td>
+                        <td class="12 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Politics</th>
+                        <td class="24 easy"></td>
+                        <td class="24 medium"></td>
+                        <td class="24 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Sports</th>
+                        <td class="21 easy"></td>
+                        <td class="21 medium"></td>
+                        <td class="21 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Television</th>
+                        <td class="14 easy"></td>
+                        <td class="14 medium"></td>
+                        <td class="14 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Vehicles</th>
+                        <td class="28 easy"></td>
+                        <td class="28 medium"></td>
+                        <td class="28 hard"></td>
+                    </tr>
+                    <tr>
+                        <th class="category">Video Games</th>
+                        <td class="15 easy"></td>
+                        <td class="15 medium"></td>
+                        <td class="15 hard"></td>
+                    </tr>
+                  </table>
             </div>
+        </main>
 
-            <div id="help-popup">
-                <img class="help-close" src="images/close.png" alt="" onclick="closeHelp(this)">
-                <div class="help-text">
-                    <div>1 - Pick a category</div>
-                    <div>2 - Answer as many questions in a row as possible</div>
-                    <div>3 - Highscores are tracked during the game</div>
-                    <div>4 - High scores for each category can be viewed on the highscore page</div>
-                </div>
+        <div id="help-popup">
+            <img class="help-close" src="images/close.png" alt="" onclick="closeHelp(this)">
+            <div class="help-text">
+                <div>1 - Pick a category</div>
+                <div>2 - Answer as many questions in a row as possible</div>
+                <div>3 - Highscores are tracked during the game</div>
+                <div>4 - High scores for each category can be viewed on the highscore page</div>
             </div>
-
-            <footer class="footer">
-                <div class="footer-link">
-                    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fadbraun45.github.io%2Fwebtech%2F&text=Try%20This%20Quiz%20Website%20and%20See%20How%20High%20You%20Can%20Score" target="_blank">
-                        <img src="images/twitter-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
-                        <div class="footer-link-text">Twitter</div>
-                    </a>
-                </div>
-                <div class="footer-link">
-                    <a href="mailto:placeholderemail@example.com">
-                        <img src="images/contact-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
-                        <div class="footer-link-text">Contact</div>
-                    </a>
-                </div>
-                <div class="footer-link">
-                    <a href="https://github.com/adbraun45/webtech" target="_blank">
-                        <img src="images/github-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
-                        <div class="footer-link-text">Github</div>
-                    </a>
-                </div>
-                <div class="footer-link">
-                    <div class="footer-link" onclick="toggleHelp()">
-                        <img src="images/help-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
-                        <div class="footer-link-text">Help</div>
-                    </div>
-                </div>
-            </footer>
         </div>
+
+        <footer class="footer">
+            <div class="footer-link">
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fadbraun45.github.io%2Fwebtech%2F&text=Try%20This%20Quiz%20Website%20and%20See%20How%20High%20You%20Can%20Score" target="_blank">
+                    <img src="images/twitter-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Twitter</div>
+                </a>
+            </div>
+            <div class="footer-link">
+                <a href="mailto:placeholderemail@example.com">
+                    <img src="images/contact-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Contact</div>
+                </a>
+            </div>
+            <div class="footer-link">
+                <a href="https://github.com/adbraun45/webtech" target="_blank">
+                    <img src="images/github-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Github</div>
+                </a>
+            </div>
+            <div class="footer-link" onclick="toggleHelp()">
+                    <img src="images/help-logo.png" class="footer-link-image" alt="" width="20px" height="20px">
+                    <div class="footer-link-text">Help</div>
+            </div>
+        </footer>
     </body>
 </html>

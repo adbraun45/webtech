@@ -6,10 +6,10 @@
         <meta name="author" content="Adam Brown">
         <meta name="desciption" content="Quiz Website">
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-        <link rel="stylesheet" href="stylesheet/index.css">
+        <link rel="stylesheet" href="stylesheet/flextest.css">
         <script src="javascript/help.js"></script>
         <script>
-            let currSelection 
+            let currSelection
             function popupShow(categoryID) {
                 currSelection = categoryID
                 popup = document.getElementById("category-select-menu");
@@ -28,7 +28,6 @@
         </script>
     </head>
     <body>
-        <div id="grid-wrapper">
             <header class="header">
                 <div class="header-left"></div>
                 <div class="header-center">
@@ -47,8 +46,8 @@
                 </div>
             </header>
 
-
-            <nav class="sidebar">
+            <div class="middle">
+                <nav class="sidebar">
                 <div class="sidebar-title">
                     Categories
                 </div>
@@ -164,9 +163,9 @@
                         <a href="quiz.html?category=15&difficulty=hard">Hard</a>
                     </div>
                 </div>
-            </nav>
+                </nav>
 
-            <main class="main-content">
+                <main class="main-content">
                 <button class="grid-item-main" onclick="popupShow(9)">General Knowledge</button>
                 <button class="grid-item-main" onclick="popupShow(27)">Animals</button>
                 <button class="grid-item-main" onclick="popupShow(10)">Books</button>
@@ -181,7 +180,8 @@
                 <button class="grid-item-main" onclick="popupShow(14)">Television</button>
                 <button class="grid-item-main" onclick="popupShow(28)">Vehicles</button>
                 <button class="grid-item-main" onclick="popupShow(15)">Video Games</button>
-            </main>
+                </main>
+            </div>
 
             <div class="popup-content" id="category-select-menu">
                     <img src="images/close.png" alt="" onclick="popupHide(this)">
@@ -226,6 +226,5 @@
                     </div>
                 </div>
             </footer>
-        </div>
     </body>
 </html>

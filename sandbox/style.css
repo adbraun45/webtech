@@ -1,0 +1,174 @@
+:root {
+    --sidebar-width: 20%;
+    --header-height: 139px
+}
+
+body {
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
+    height: 100%;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #large-image {
+        display: none !important;
+    }
+    #small-image {
+        display: block !important;
+    }
+    :root {
+        --sidebar-width: 25%;
+    }
+    .sidebar {
+        display: none !important;
+    }
+    .main {
+        margin-left: 0 !important;
+    }
+}
+
+#large-image {
+    height: 73px;
+    width: 500px;
+}
+
+#small-image {
+    display: none;
+    height: 73px;
+    width: 65px;
+}
+
+.header-logo {
+    margin: auto;
+}
+
+.header-title {
+    padding: 10px;
+    padding: 0.5rem 1rem;
+    background: rgb(0,1,255);
+    background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
+    border: 1px;
+    border-color: black;
+    border-style: none none solid none;
+}
+
+.topnav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: rgb(29, 112, 139);
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: rgb(74, 192, 231);
+    color: white;
+  }
+
+.header-center {
+    background: linear-gradient(to left, #28D0A3 0%, #03B1E2 20%, #147196 100%);
+    text-align: center;
+    color: white; 
+    font-size: 3rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--header-height);
+    height: 200%;
+    width: var(--sidebar-width);
+    background-color: rgb(29, 112, 139);
+}
+
+.sidebar-header {
+    padding: 1em;
+}
+
+.sidebar-title {
+    font-size: 20pt;
+    text-align: center;
+    margin: 0;
+}
+
+.sidebar-link {
+    color: white;
+    display: block;
+    padding: 15px 15px 15px 15px;
+    text-decoration: none;
+    font-size: 17pt;
+}
+
+.sidebar-link:hover {
+    text-decoration: underline;
+}
+
+.main {
+    margin-left: 20%;
+}
+
+.footer-content {
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(117, 203, 243);
+}
+
+.footer-images {
+    display: flex;
+    align-items: center;
+    float: right;
+}
+
+.footer-link-image {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-link {
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+    color: black;
+}
+
+.main {
+    padding: 60px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 60px 60px;
+    grid-template-rows: auto;
+    background-color: #28D0A3;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: #f2f2f2;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
