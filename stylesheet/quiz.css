@@ -14,25 +14,25 @@
 
 html, body {
     margin: 0; 
-    padding: 0; 
-    height: 100%;
+    padding: 0;
+    background-color: var(--main-background);
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
     overflow: hidden;
 }
 
 .header {
-    background: var(--header-background);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--header-background);
 }
 
 .header-link {
     display: inline;
-    text-decoration: none;
     color: white;
-    font-size: 12pt;
+    font-size: 16px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .header-right {
@@ -53,10 +53,11 @@ html, body {
 }
 
 .middle {
-    overflow: scroll;
-    height: calc(100vh - 162px);
     display: flex;
+    justify-content: center;
     flex-direction: row;
+    height: calc(100vh - 162px);
+    overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -66,24 +67,24 @@ html, body {
 }
 
 .sidebar {
-    width: 20%;
     background-color: var(--sidebar-background);
     color: white;
+    width: 20%;
 }
 
 .sidebar-title {
     background-color: var(--sidebar-background2);
-    font-weight: bold;
-    font-size: 21pt;
-    text-align: center;
     padding: 15px;
+    text-align: center;
+    font-size: 21pt;
+    font-weight: bold;
 }
 
 .sidebar-link {
     display: block;
     padding: 10px 15px;
-    text-decoration: none;
     font-size: 23px;
+    text-decoration: none;
 }
 
 .sidebar-link:hover {
@@ -108,11 +109,14 @@ html, body {
 }
 
 .dropdown-content a {
-    color: white;
-    padding: 15px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 20px;
+    color: white;
+    font-size: 25px;
+    padding: 15px;
     text-decoration: none;
-    display: block;
 }
 
 .dropdown-content a:hover {
@@ -126,10 +130,8 @@ html, body {
 
 
 .quiz-content {
-    width: 100%;
-    padding: 2.5%;
-    background-color: rgb(74, 192, 231);
-    
+    width: 80%;
+    padding: 50px;
 }
 
 .category {
@@ -223,7 +225,7 @@ html, body {
     justify-content: end;
     align-items: center;
     color: white;
-    background-color: rgb(117, 203, 243);
+    background-color: var(--footer-background);
     bottom: 0;
 }
 
@@ -258,7 +260,23 @@ html, body {
     .sidebar {
         display: none !important;
     }
+    .quiz-content {
+        width: 100%;
+        padding: 15px !important;
+    }
     .category {
         font-size: 20px;
+    }
+    .quiz-scores {
+        margin: 5px;
+        font-weight: 500;
+    }
+    #question {
+        margin: 10px;
+    }
+    .options {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px;
     }
 }

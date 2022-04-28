@@ -9,11 +9,15 @@
         <link rel="stylesheet" href="stylesheet/index.css">
         <script src="javascript/help.js"></script>
         <script>
-            let currSelection 
+            let currSelection
             function popupShow(categoryID) {
                 currSelection = categoryID
                 popup = document.getElementById("category-select-menu");
-                popup.style.display = "block";
+                if (popup.style.display == "block") {
+                    popup.style.display = "none";
+                } else {
+                    popup.style.display = "block";
+                }
             }
             function popupHide(x) {
                 popup = document.getElementById("category-select-menu");
@@ -28,11 +32,10 @@
         </script>
     </head>
     <body>
-        <div id="grid-wrapper">
             <header class="header">
                 <div class="header-left"></div>
                 <div class="header-center">
-                    <a href="/index.html">
+                    <a href="/">
                         <img class="header-logo" id="large-image" src="images/logo-large.png" alt="Site logo and title" title="Quiz Website">
                         <img class="header-logo" id="small-image" src="images/logo-small.png" alt="Site logo and title" title="Quiz Website"> 
                     </a>
@@ -47,126 +50,126 @@
                 </div>
             </header>
 
+            <main class="middle">
+                <nav class="sidebar">
+                    <div class="sidebar-title">
+                        Categories
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">General Knowledge</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=9&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=9&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=9&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Animals</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=27&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=27&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=27&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Books</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=10&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=10&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=10&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Celebrities</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=26&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=26&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=26&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Computers</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=18&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=18&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=18&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Geography</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=22&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=22&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=22&difficulty=hard">Hard</a>
+                        </div>
+                    </div> 
+                    <div class="dropdown">
+                        <div class="sidebar-link">Film</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=11&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=11&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=11&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">History</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=23&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=23&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=23&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Music</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=12&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=12&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=12&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Politics</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=24&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=24&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=24&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Sports</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=21&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=21&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=21&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Television</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=14&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=14&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=14&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Vehicles</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=28&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=28&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=28&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="sidebar-link">Video Games</div>
+                        <div class="dropdown-content">
+                            <a href="quiz.html?category=15&difficulty=easy">Easy</a>
+                            <a href="quiz.html?category=15&difficulty=medium">Medium</a>
+                            <a href="quiz.html?category=15&difficulty=hard">Hard</a>
+                        </div>
+                    </div>
+                </nav>
 
-            <nav class="sidebar">
-                <div class="sidebar-title">
-                    Categories
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">General Knowledge</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=9&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=9&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=9&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Animals</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=27&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=27&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=27&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Books</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=10&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=10&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=10&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Celebrities</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=26&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=26&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=26&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Computers</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=18&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=18&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=18&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Geography</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=22&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=22&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=22&difficulty=hard">Hard</a>
-                    </div>
-                </div> 
-                <div class="dropdown">
-                    <div class="sidebar-link">Film</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=11&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=11&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=11&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">History</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=23&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=23&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=23&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Music</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=12&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=12&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=12&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Politics</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=24&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=24&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=24&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Sports</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=21&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=21&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=21&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Television</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=14&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=14&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=14&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Vehicles</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=28&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=28&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=28&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <div class="sidebar-link">Video Games</div>
-                    <div class="dropdown-content">
-                        <a href="quiz.html?category=15&difficulty=easy">Easy</a>
-                        <a href="quiz.html?category=15&difficulty=medium">Medium</a>
-                        <a href="quiz.html?category=15&difficulty=hard">Hard</a>
-                    </div>
-                </div>
-            </nav>
-
-            <main class="main-content">
+                <main class="main-content">
                 <button class="grid-item-main" onclick="popupShow(9)">General Knowledge</button>
                 <button class="grid-item-main" onclick="popupShow(27)">Animals</button>
                 <button class="grid-item-main" onclick="popupShow(10)">Books</button>
@@ -181,6 +184,7 @@
                 <button class="grid-item-main" onclick="popupShow(14)">Television</button>
                 <button class="grid-item-main" onclick="popupShow(28)">Vehicles</button>
                 <button class="grid-item-main" onclick="popupShow(15)">Video Games</button>
+                </main>
             </main>
 
             <div class="popup-content" id="category-select-menu">
@@ -226,6 +230,5 @@
                     </div>
                 </div>
             </footer>
-        </div>
     </body>
 </html>

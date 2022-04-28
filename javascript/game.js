@@ -47,7 +47,7 @@ function useApiData(data) {
 
     for (let i = 0; i < 3; i++) {
         incorrect_button = button_array[Math.floor(Math.random()*button_array.length)];
-        incorrect_button.setAttribute('id', 'incorrect_answer')
+        incorrect_button.classList.add("incorrect")
         incorrect_button.innerHTML = data.results[0].incorrect_answers[i]
         index = button_array.indexOf(incorrect_button)
         button_array.splice(index, 1)
@@ -61,7 +61,7 @@ function useApiData(data) {
     item.innerHTML = data.results[0].correct_answer
 
     let correct_button = item
-    correct_button.setAttribute('id', 'correct_answer')
+    correct_button.setAttribute('id', 'correct')
     console.log(correct_button)
 
     correct_button.addEventListener("click", () => {
@@ -71,12 +71,11 @@ function useApiData(data) {
 
 function wrongClicked() {
     incorrectSound.play();
-    window.localStorage.setItem("highscores", JSON.stringify(highscores))
-    document.getElementById('correct_answer').style.backgroundColor = "lightgreen"
-    //document.getElementsByClassName("incorrect_answer").style.backgroundcolor = "red"
-    elements = document.getElementsByClassName('incorrect_answer');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].style.backgroundColor="red";
+    document.getElementById('correct').style.backgroundColor = "lightgreen"
+    //wrong_answers[0] = document.getElementsByClassName('incorrect_answer');
+    wrong_answers = document.getElementsByClassName('incorrect');
+    for (var i = 0; i < wrong_answers.length; i++) {
+        wrong_answers[i].style.backgroundColor = "red";
     }
 
     setTimeout(() => {window.location = "index.html";}, 1000);
@@ -100,5 +99,6 @@ function compareHighscores() {
     if (score > highscore) {
         highscore = score;
         highscores["categories"][0][categoryID][diffculty] = score
+        window.localStorage.setItem("highscores", JSON.stringify(highscores))
     }
 }

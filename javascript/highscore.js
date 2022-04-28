@@ -11,7 +11,7 @@ categories.forEach(categoryID => {
     for (const diffculty of difficulties) {
         i = difficulties.indexOf(diffculty)
         if (categoryScore[i].classList.contains(diffculty)) {
-            categoryScore[i].innerHTML = highscores["categories"][0][categoryID][diffculty]
+            categoryScore[i].textContent = highscores["categories"][0][categoryID][diffculty]
         }
     }
 })
