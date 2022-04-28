@@ -14,8 +14,8 @@ let highscore = highscores["categories"][0][categoryID][diffculty]
 const apiURL = generateQuestion();
 let currentCategory = sendApiRequest(apiURL);
 
-var correctSound = new Audio('correct.mp3');
-var incorrectSound = new Audio('wrong.mp3');
+var correctSound = new Audio('sounds/correct.mp3');
+var incorrectSound = new Audio('sounds/wrong.mp3');
 
 
 function generateQuestion() {
@@ -32,6 +32,7 @@ async function sendApiRequest(apiURL) {
 
 function useApiData(data) {
     document.querySelector("#question").innerHTML = `Question ${questionNumber}: ${data.results[0].question}`
+    questionNumber++
 
     document.querySelector("#score").innerHTML = `Score: ${score}`
     document.querySelector("#highscore").innerHTML = `Highscore: ${highscore}`
@@ -40,39 +41,50 @@ function useApiData(data) {
     categoryFull = data.results[0].category
     categorySplit = categoryFull.split(": ")
     categoryName = categorySplit.at(-1)
-    document.querySelector(".category").innerHTML = `Category: ${categoryName}`
-    questionNumber++
-    elems = document.getElementsByClassName("answer")
-    var button_array = Array.from(elems);
 
+    document.querySelector(".category").innerHTML = `Category: ${categoryName}`
+
+
+    answersButton = document.getElementsByClassName("answer")
+    var answers = Array.from(answersButton);
+
+    // randomize which button has each incorrect answer
     for (let i = 0; i < 3; i++) {
-        incorrect_button = button_array[Math.floor(Math.random()*button_array.length)];
+        // pick random button
+        incorrect_button = answers[Math.floor(Math.random()*answers.length)];
         incorrect_button.innerHTML = data.results[0].incorrect_answers[i]
-        index = button_array.indexOf(incorrect_button)
-        button_array.splice(index, 1)
+
+        // remove button from array
+        index = answers.indexOf(incorrect_button)
+        answers.splice(index, 1)
 
         incorrect_button.addEventListener("click", () => {
+            // function ends game when wrong button is clicked
             wrongClicked()
         }, {once: true});
     }
 
-    item = button_array[Math.floor(Math.random()*button_array.length)];
-    item.innerHTML = data.results[0].correct_answer
+    // remaining button gets the correct answer
+    correct_button = answers[0];
+    correct_button.innerHTML = data.results[0].correct_answer
 
-    let correct_button = item
     correct_button.setAttribute('id', 'correct')
-    console.log(correct_button)
+    //used in testing to see which button was correct
+    //console.log(correct_button)
 
     correct_button.addEventListener("click", () => {
+        // function to increment score and check if highscore was achieved
         correctClicked()
     }, { once: true});
 }
 
 function wrongClicked() {
     incorrectSound.play();
+    // change correct answer to green colour
     document.getElementById('correct').style.backgroundColor = "green"
 
-    setTimeout(() => {window.location = "index.html";}, 1000);
+    // returns to homepage after incorrect answer is given
+    setTimeout(() => {window.location = "/";}, 1000);
 }
 
 function correctClicked() {
@@ -81,6 +93,7 @@ function correctClicked() {
     correctSound.play();
     document.getElementById("correct").removeAttribute("id", "correct")
 
+    // reset buttons for next question
     butns = document.getElementsByClassName("answer")
     for (let i = 0; i < butns.length; i++) {
         item = butns[i]
@@ -94,6 +107,8 @@ function compareHighscores() {
     if (score > highscore) {
         highscore = score;
         highscores["categories"][0][categoryID][diffculty] = score
+
+        // update record of highscore in local storage
         window.localStorage.setItem("highscores", JSON.stringify(highscores))
     }
 }

@@ -1,6 +1,6 @@
-// initialise local storage
 let ls = window.localStorage
 
+// all default scores are 0
 const defaultScores = {
     "categories":[
         {
@@ -78,7 +78,7 @@ const defaultScores = {
     ]
 };
 
-
+// create local storage entry if one does not exist
 if (!ls.hasOwnProperty("highscores")) {
     ls.setItem("highscores", JSON.stringify(defaultScores))
 }
