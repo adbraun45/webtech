@@ -36,6 +36,11 @@ function useApiData(data) {
     document.querySelector("#score").innerHTML = `Score: ${score}`
     document.querySelector("#highscore").innerHTML = `Highscore: ${highscore}`
 
+    answers = document.getElementsByClassName("answer")
+    for (var i = 0; i < answers.length; i++) {
+        answers[i].classList.remove("incorrect");
+    }
+
     // remove extra info from category
     categoryFull = data.results[0].category
     categorySplit = categoryFull.split(": ")
@@ -71,8 +76,7 @@ function useApiData(data) {
 
 function wrongClicked() {
     incorrectSound.play();
-    document.getElementById('correct').style.backgroundColor = "lightgreen"
-    //wrong_answers[0] = document.getElementsByClassName('incorrect_answer');
+    document.getElementById('correct').style.backgroundColor = "green"
     wrong_answers = document.getElementsByClassName('incorrect');
     for (var i = 0; i < wrong_answers.length; i++) {
         wrong_answers[i].style.backgroundColor = "red";
