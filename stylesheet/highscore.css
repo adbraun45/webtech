@@ -67,72 +67,71 @@ html, body {
 }
 
 .sidebar {
+    background-color: var(--sidebar-background);
+    color: white;
     width: 20%;
-    background-color: rgb(53, 142, 172);
 }
 
 .sidebar-title {
-    color: white;
-    background-color: rgb(14, 88, 112);
-    font-weight: bold;
-    font-size: 21pt;
-    text-align: center;
+    background-color: var(--sidebar-background2);
     padding: 15px;
+    text-align: center;
+    font-size: 21pt;
+    font-weight: bold;
 }
 
 .sidebar-link {
-    color: white;
     display: block;
     padding: 10px 15px;
+    font-size: 23px;
     text-decoration: none;
-    font-size: 17pt;
 }
 
 .sidebar-link:hover {
-    background-color: rgb(14, 88, 112);
+    background-color: var(--sidebar-background2);
 }
 
 .dropdown {
-    position: relative;
     display: block;
+    position: relative;
 }
-
+  
 .dropdown-content {
     display: none;
     position: absolute;
     top: 0;
     left: 100%;
     text-align: center;
-    width: 50%;
-    background-color: rgb(79, 175, 207);
+    width: 80%;
+    background-color: var(--dropdown-background);
     box-shadow: 5px 10px 18px rgba(0,0,0,0.5);
     z-index: 1;
 }
-
+  
 .dropdown-content a {
-    color: white;
-    padding: 15px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 20px;
+    color: white;
+    font-size: 25px;
+    padding: 15px;
     text-decoration: none;
-    display: block;
 }
-
+  
 .dropdown-content a:hover {
-    background-color: rgb(14, 88, 112); font-weight: bold;
+    background-color: var(--dropdown-background2);
+    font-weight: bold;
 }
-
+  
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown:hover .sidebar-link {
-    background-color: rgb(14, 88, 112)
-}
-
 .highscore-table {
     overflow: scroll;
-    width: 100%;
-    padding: 2.5%;
+    width: 80%;
+    padding: 50px;
     background-color: rgb(74, 192, 231);
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -283,6 +282,10 @@ th.hard {
     .sidebar {
         display: none;
     }
+    .highscore-table {
+        width: 100%;
+        padding: 2.5%;
+    } 
 }
 
 @media screen and (max-height: 1023px) {
