@@ -105,7 +105,7 @@ html, body {
     top: 0;
     left: 100%;
     text-align: center;
-    width: 50%;
+    width: 80%;
     background-color: var(--dropdown-background);
     box-shadow: 5px 10px 18px rgba(0,0,0,0.5);
     z-index: 1;
