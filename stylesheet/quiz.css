@@ -10,6 +10,9 @@
     --dropdown-background: rgb(79, 175, 207);
     --dropdown-background2: rgb(14, 88, 112);
     --footer-background: rgb(117, 203, 243);
+    --highscore-background: rgb(74, 192, 231);
+    --table-header: rgb(14, 88, 112);
+    --table-data: rgb(53, 142, 172);
 }
 
 html, body {
